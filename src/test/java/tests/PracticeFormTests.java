@@ -9,30 +9,26 @@ import pages.CompleteFormPage;
 import pages.PracticeFormPage;
 
 public class PracticeFormTests extends BaseTest {
-
   @BeforeAll
   static void beforeAll() {
     open("https://demoqa.com/automation-practice-form");
-
   }
 
   @Test
-  void praticeFormTest() throws InterruptedException {
+  void praticeFormTest(){
     // preparation
-    // TODO add all these stuff into DataClass
-    String
-        firstName = "FirstName",
-        lastName = "LastName",
-        email = "test@test.com",
+    String firstName = faker.name().firstName(),
+        lastName = faker.name().lastName(),
+        email = faker.internet().emailAddress(),
+        phoneNumber = faker.phoneNumber().subscriberNumber(10),
+        address = faker.address().fullAddress(),
         gender = "Other",
-        phoneNumber = "0000000000",
-        day = "7",
-        month = "April",
-        year = "1985",
         filePath = "trying.jpg",
-        address = "Test address",
         state = "NCR",
-        city = "Delhi";
+        city = "Delhi",
+        day = String.valueOf(faker.random().nextInt(1, 30)),
+        month = "April",
+        year = String.valueOf(faker.random().nextInt(1950, 2000));
 
     List<String>
         subjects = List.of("Maths", "Hindi"),
@@ -56,7 +52,6 @@ public class PracticeFormTests extends BaseTest {
         .fillState(state)
         .fillCity(city)
         .clickSubmitButton();
-    Thread.sleep(10000);
 
     // assert
     var completeFormPage = new CompleteFormPage();
