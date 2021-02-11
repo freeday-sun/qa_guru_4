@@ -2,9 +2,8 @@ package pages;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.$$x;
-import static com.codeborne.selenide.Selenide.$x;
-import static com.codeborne.selenide.Selenide.actions;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
@@ -15,23 +14,23 @@ import java.util.List;
 
 public class PracticeFormPage {
   private SelenideElement
-      mainHeader = $x("//*[@class=\"main-header\"]"),
-      firstName = $x("//*[@id=\"firstName\"]"),
-      lastName = $x("//*[@id=\"lastName\"]"),
-      email = $x("//*[@id=\"userEmail\"]"),
-      userNumber = $x("//*[@id=\"userNumber\"]"),
-      dataOfBirthWrapper = $x("//*[@class=\"react-datepicker-wrapper\"]"),
-      mountSelector = $x("//*[@class=\"react-datepicker__month-select\"]"),
-      yearSelector = $x("//*[@class=\"react-datepicker__year-select\"]"),
-      uploadButton = $x("//*[@id=\"uploadPicture\"]"),
-      currentAddress = $x("//*[@id=\"currentAddress\"]"),
-      stateSelector = $x("//*[@id=\"state\"]//input"),
-      citySelector = $x("//*[@id=\"city\"]//input"),
-      submitButton = $x("//*[@id=\"submit\"]");
+      mainHeader = $(".main-header"),
+      firstName = $("#firstName"),
+      lastName = $("#lastName"),
+      email = $("#userEmail"),
+      userNumber = $("#userNumber"),
+      dataOfBirthWrapper = $(".react-datepicker-wrapper"),
+      mountSelector = $(".react-datepicker__month-select"),
+      yearSelector = $(".react-datepicker__year-select"),
+      uploadButton = $("#uploadPicture"),
+      currentAddress = $("#currentAddress"),
+      stateSelector = $("#state input"),
+      citySelector = $("#city input"),
+      submitButton = $("#submit");
 
   private ElementsCollection
       daysSelectors = $$x("//*[contains(@class, \"react-datepicker__day--\")]"),
-      subjectsInput = $$x("//*[@id=\"subjectsContainer\"]//input");
+      subjectsInput = $$("#subjectsContainer input");
 
   public PracticeFormPage checkFormTitile(){
     mainHeader.shouldBe(Condition.visible);
