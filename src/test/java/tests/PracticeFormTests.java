@@ -30,13 +30,15 @@ public class PracticeFormTests extends BaseTest {
         month = "April",
         year = String.valueOf(faker.random().nextInt(1950, 2000));
 
+    PracticeFormPage practiceForm = new PracticeFormPage();
+    CompleteFormPage completeFormPage = new CompleteFormPage();
+    String expectedCompleteFormTitle = "Thanks for submitting the form";
+
     List<String>
         subjects = List.of("Maths", "Hindi"),
         hobbies = List.of("Sports", "Reading");
 
     // action
-    var practiceForm = new PracticeFormPage();
-
     practiceForm
         .checkFormTitile()
         .fillFirstName(firstName)
@@ -54,11 +56,8 @@ public class PracticeFormTests extends BaseTest {
         .clickSubmitButton();
 
     // assert
-    var completeFormPage = new CompleteFormPage();
-    String expectedTitle = "Thanks for submitting the form";
-
     completeFormPage
-        .checkFormTitle(expectedTitle)
+        .checkFormTitle(expectedCompleteFormTitle)
         .validateData(
             firstName,
             lastName,
